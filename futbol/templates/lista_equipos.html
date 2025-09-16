@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Lista de equipos{% endblock %}
+{% block content %}
+<h2>Equipos de fútbol registrados</h2>
+<a href="{% url 'crear_equipo' %}" class="btn btn-primary mb-3">➕ Nuevo equipo</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>Fundación</th>
+            <th>Estadio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for equipo in equipos %}
+        <tr>
+            <td>{{ equipo.nombre }}</td>
+            <td>{{ equipo.ciudad }}</td>
+            <td>{{ equipo.fundacion }}</td>
+            <td>{{ equipo.estadio }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No hay equipos registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
